@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Web Hosting</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #A2A378;
+			color: #e0e0e0;
+			padding: 30px;
+		}
+
+		h1 {
+			color: #004080;
+			text-align: center;
+			margin-top: 50px;
+			margin-bottom: 50px;
+		}
+
+		h2 {
+			color: #004080;
+			margin-top: 30px;
+			margin-bottom: 10px;
+			font-size: 1.2em;
+			font-weight: bold;
+		}
+
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			margin: 5px 0;
+		}
+
+		form {
+			margin-top: 30px;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+			color: #666;
+		}
+
+		input[type="text"],
+		textarea {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			margin-bottom: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-sizing: border-box;
+		}
+
+		input[type="submit"] {
+			background-color: #004080;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 1.1em;
+			font-weight: bold;
+			transition: background-color 0.2s;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #002b5c;
+		}
+
+		a {
+			color: #004080;
+			text-decoration: none;
+			border-bottom: 1px solid #004080;
+			transition: border-color 0.2s;
+		}
+
+		a:hover {
+			border-color: #002b5c;
+		}
+
+		button {
+			background-color: #cc0000;
+			color: #fff;
+			padding: 5px 10px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 1em;
+			font-weight: bold;
+			transition: background-color 0.2s;
+		}
+
+		button:hover {
+			background-color: #990000;
+		}
+
+	</style>
+</head>
+<body>
+	<h1>ADMIN</h1>
+
+	<h2>Registered Websites</h2>
+	<ul>
+	{% for website in web_pages %}
+		<li>
+			<a href="{{ url_for('serve_page', path=website.domain_name[0:]) }}">{{ website.domain_name }}</a>
+			<!--<button onclick="{{ url_for('delete_page', path='website') }}">Delete</button>-->
+            <button onclick="{{ url_for('delete_page', path='admin/website.domain_name[0:]') }}">Delete</button>
+
+		</li>
+	{% endfor %}
+	</ul>
+
+</body>
+</html>
